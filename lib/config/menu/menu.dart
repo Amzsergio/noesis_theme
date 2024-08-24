@@ -13,12 +13,3 @@ class MenuItem {
     required this.icon,
   });
 }
-
-const List<MenuItem> appMenuItems = <MenuItem>[
-  MenuItem(
-    title: "Theme Settings",
-    subTitle: "Elige tu tema favorito",
-    link: "/theme-settings",
-    icon: Icons.brush_rounded,
-  )
-];

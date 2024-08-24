@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noesis_theme/config/router/app_router.dart';
-import 'package:noesis_theme/presentation/screens/home/home_screen.dart';
-import 'package:noesis_theme/presentation/screens/screens.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const ProviderScope(
+    child: MainApp(),
+  ));
 }
 
 class MainApp extends StatelessWidget {
