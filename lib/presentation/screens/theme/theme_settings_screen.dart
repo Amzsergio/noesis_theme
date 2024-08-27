@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:noesis_theme/config/menu/theme_menu/theme_menu.dart';
+import 'package:noesis_theme/presentation/providers/theme_provider.dart';
 import 'package:noesis_theme/presentation/widgets/custom_list_tile_widget.dart';
 
-class ThemeSettingsScreen extends StatelessWidget {
+class ThemeSettingsScreen extends ConsumerWidget {
   const ThemeSettingsScreen({super.key});
   static const String name = 'theme-settings';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkmode = ref.watch(isDarkmodeProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Theme Settings"),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.dark_mode))
+          IconButton(
+            icon: Icon(isDarkmode ? Icons.dark_mode : Icons.light_mode),
+            onPressed: () {
+              ref.read(isDarkmodeProvider.notifier).update((state) => !state);
+            },
+          )
         ],
       ),
       body: const _ThemeScreen(),

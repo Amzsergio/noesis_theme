@@ -12,14 +12,18 @@ class CustomListTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return ListTile(
       leading: Icon(
         menuItem.icon,
-        color: Colors.cyan,
+        color: colors.primary,
       ),
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
-      trailing: const Icon(Icons.arrow_forward_ios),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        color: colors.primary,
+      ),
       onTap: () {
         context.push(menuItem.link);
       },
